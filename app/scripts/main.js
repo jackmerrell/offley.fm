@@ -1,25 +1,40 @@
 let DateTime = luxon.DateTime;
 
 let player = document.getElementById('player');
-let button = document.getElementById('start-button');
+let play = document.getElementById('play');
+let mute = document.getElementById('mute');
 
-console.log(DateTime.utc().second);
+let numSecondsDay = 86400;
 
-// console.log(DateTime.utc().hour + DateTime.utc().minute + DateTime.utc().millisecond);
-
-button.addEventListener('click', () => {
+play.addEventListener('click', () => {
     player.play().then(() => {
       player.pause();
       playerTime()
     });
   });
 
-function playerTime(){
+mute.addEventListener('click', () => {
+    player.muted = true;
+  });
 
+function playerTime(){
+  // get current time of day in seconds
+  let currentTime = ((DateTime.utc().hour)*3600) + ((DateTime.utc().minute)*60) + (DateTime.utc().second);
+  console.log('current time = ' + currentTime);
+
+  // get current time of day in percentage
+  let getDayPercent = currentTime / numSecondsDay;
+  console.log('current time as percentage = ' + getDayPercent);
+
+  // get track duration length
   let duration = player.duration;
-  let progress = ((((DateTime.utc().hour) + DateTime.utc().minute) + DateTime.utc().second) % duration) / duration;
-  console.log('duration = ' + duration);
-  console.log('percentage to scrub to = ' + progress * 100);
-  player.currentTime = (progress * duration);
+  console.log('track duration = ' + duration);
+
+  let scrubTo = getDayPercent * duration;
+  console.log('time in seconds to scrub to = ' + scrubTo);
+
   player.play()
+  player.currentTime = scrubTo;
+  player.muted = false;
+
 }
