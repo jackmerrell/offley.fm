@@ -4,6 +4,7 @@
     "node": ">=4"
   },
   "dependencies": {
+    "luxon": "^1.24.1",
     "modernizr": "^3.7.1"
   },
   "devDependencies": {
