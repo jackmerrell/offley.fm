@@ -44,13 +44,8 @@ function playerTime(){
   let scrubTo = duration * ((offset * getDayPercent) - numOfTimesPlayed);
   console.log('time in seconds to scrub to = ' + scrubTo);
 
-
-
   player.play()
   player.currentTime = scrubTo;
   player.muted = false;
-
-
-
 
 }
