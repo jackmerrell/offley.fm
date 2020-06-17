@@ -36,9 +36,12 @@ function playerTime(){
   let getDayPercent = currentTime / numSecondsDay;
   console.log('current time as percentage = ' + getDayPercent);
 
+  let numOfTimesPlayed = Math.floor(offset * getDayPercent);
+  console.log('Number of times played today = ' + numOfTimesPlayed);
+
 
   // time of track to move to in seconds
-  let scrubTo = duration * (offset * getDayPercent) - Math.floor(offset * getDayPercent);
+  let scrubTo = duration * ((offset * getDayPercent) - numOfTimesPlayed);
   console.log('time in seconds to scrub to = ' + scrubTo);
 
 
