@@ -30,13 +30,14 @@ function playStatus() {
   }
 }
 
-player.loadstart = function() {
+player.addEventListener('loadstart', event => {
   button.innerHTML= 'tunning…';
-};
+})
 
-player.waiting = function() {
-  button.innerHTML= 'tunning…';
-};
+player.addEventListener('canplay', event => {
+  button.innerHTML= 'play';
+})
+
 
 
 function play(){
