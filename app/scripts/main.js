@@ -30,15 +30,6 @@ function playStatus() {
   }
 }
 
-player.addEventListener('loadstart', event => {
-  button.innerHTML= 'tunning…';
-})
-
-player.addEventListener('canplay', event => {
-  button.innerHTML= 'play';
-})
-
-
 
 function play(){
   // get track duration length
