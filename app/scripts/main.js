@@ -1,24 +1,37 @@
-const DateTime = luxon.DateTime;
+let DateTime = luxon.DateTime;
+let numSecondsDay = 86400;
 
-const player = document.getElementById('player');
-const play = document.getElementById('play');
-const mute = document.getElementById('mute');
+let player = document.getElementById('player');
+let playRecord = document.getElementById('playRecord');
+let albumArt = document.getElementById('albumArt');
+let button = document.getElementById('button');
 
-const numSecondsDay = 86400;
+let playPause = document.querySelectorAll('#playPause');
 
-play.addEventListener('click', () => {
-  player.play().then(() => {
-    player.pause();
-    playerTime()
-  });
-});
+playPause.forEach(item => {
+  item.addEventListener('click', event => {
+    player.play().then(() => {
+      player.pause();
+      playStatus();
+    });
+  })
+})
 
-mute.addEventListener('click', () => {
-  player.muted = true;
-});
+  function playStatus() {
+    if(albumArt.classList.contains('paused')) {
+      button.innerHTML= 'mute';
+      albumArt.classList.remove('paused');
+      albumArt.classList.add('playing');
+      play()
+    } else {
+      button.innerHTML= 'play';
+      albumArt.classList.add('paused');
+      player.muted = true;
+    }
+  }
 
-function playerTime() {
 
+function play(){
   // get track duration length
   const duration = player.duration;
   console.log('track duration = ' + duration);
@@ -29,7 +42,7 @@ function playerTime() {
 
   // get current time of day in seconds
   const currentTime = ((DateTime.utc().hour) * 3600) + ((DateTime.utc().minute) * 60) + (DateTime.utc().second);
-  console.log('current time = ' + currentTime);
+  console.log('current time of day in seconds = ' + currentTime);
 
   // get current time of day in percentage
   const getDayPercent = currentTime / numSecondsDay;
@@ -46,5 +59,4 @@ function playerTime() {
   player.play()
   player.currentTime = scrubTo;
   player.muted = false;
-
 }

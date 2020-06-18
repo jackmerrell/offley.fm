@@ -5,8 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>offley fm</title>
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -16,12 +15,26 @@
   </head>
   <body>
 
-  <button id="play">play</button>
-  <button id="mute">mute</button>
+    <header>
+      <div class="title">Offley.fm – live <span class="live">⬤</span></div>
+      <div id="playPause" class="title"><span id="button" class="button">play</span></div>
+    </header>
 
-  <audio id="player" loop preload="auto">
-    <source src="images/mix.mp3" type="audio/mpeg">
-  </audio>
+    <main class="container">
+      <div id="playPause" class="player">
+        <div class="crop">
+          <div id="albumArt" class="album-art paused">
+            <div class="spindle"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="background"></div>
+
+    <audio id="player" loop preload="auto">
+      <source src="images/for15.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- build:js scripts/vendor.js -->
     <!-- endbuild -->
