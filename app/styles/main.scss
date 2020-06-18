@@ -72,6 +72,7 @@ button:active{
   height: 50vh;
   transition: all 200ms;
   cursor: pointer;
+
 }
 .player:hover{
     transform: scale(1.05);
@@ -82,10 +83,8 @@ button:active{
   height: inherit;
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
+  clip-path: circle(50% at center);
   pointer-events: none;
-  box-shadow: 0 0 50px 20px rgba(0,0,0,0.2);
-
  }
 
  .album-art{

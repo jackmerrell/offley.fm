@@ -30,6 +30,14 @@ playPause.forEach(item => {
     }
   }
 
+  player.loadstart = function() {
+    button.innerHTML= 'tunning';
+};
+
+player.waiting = function() {
+  button.innerHTML= 'tunning';
+};
+
 
 function play(){
   // get track duration length
