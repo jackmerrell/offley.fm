@@ -30,7 +30,6 @@ function playStatus() {
   }
 }
 
-
 function play(){
   // get track duration length
   const duration = player.duration;
