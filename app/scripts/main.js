@@ -21,7 +21,6 @@ function playStatus() {
   if(albumArt.classList.contains('paused')) {
     button.innerHTML= 'mute';
     albumArt.classList.remove('paused');
-    albumArt.classList.add('playing');
     play()
   } else {
     button.innerHTML= 'play';
@@ -33,7 +32,7 @@ function playStatus() {
 function play(){
   // get track duration length
   const duration = player.duration;
-  console.log('track duration = ' + duration);
+  console.log('track duration in seconds = ' + duration);
   // player offset
   const offset = numSecondsDay / duration;
   console.log('times the track will play in a day = ' + offset);
@@ -53,4 +52,5 @@ function play(){
   player.play()
   player.currentTime = scrubTo;
   player.muted = false;
+  albumArt.classList.add('playing');
 }
